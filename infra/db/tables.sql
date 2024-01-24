@@ -1,7 +1,7 @@
 CREATE TABLE users (
   id uuid DEFAULT gen_random_uuid(),
   email VARCHAR(50) NOT NULL,
-  username VARCHAR(50) NOT NULL
+  username VARCHAR(50) NOT NULL,
   PRIMARY KEY(id)
 );
 
@@ -24,7 +24,8 @@ CREATE TABLE post(
   created_at TIMESTAMP DEFAULT now(),
   PRIMARY KEY(id),
   CONSTRAINT fk_created_by
-    FOREIGN KEY users(id)
+    FOREIGN KEY (created_by)
+      REFERENCES users(id)
 );
 
 CREATE TABLE attachment (
@@ -33,5 +34,6 @@ CREATE TABLE attachment (
   url VARCHAR NOT NULL,
   PRIMARY KEY(id),
   CONSTRAINT fk_post
-    FOREIGN KEY post(id)
+    FOREIGN KEY (post_id)
+      REFERENCES post(id)
 );

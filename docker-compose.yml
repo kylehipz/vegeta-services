@@ -7,9 +7,11 @@ services:
       POSTGRES_USER: postgres
       POSTGRES_PASSWORD: postgres
       POSTGRES_DB: blog-post
+    ports:
+      - 5432:5432
     volumes:
-      - $PWD/infra/db:/docker-entrypoint.initdb.d
       - blog-post-db-volume:/var/lib/postgresql/data
+      - $PWD/infra/db/tables.sql:/docker-entrypoint-initdb.d/init.sql
 
 volumes:
   blog-post-db-volume:

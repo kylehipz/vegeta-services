@@ -5,4 +5,4 @@ clean:
 	docker compose down
 
 purge:
-	docker compose down --rmi all -v
+	docker compose down -v
