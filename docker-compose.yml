@@ -1,0 +1,14 @@
+services:
+  blog-post-db:
+    image: postgres
+    container_name: db
+    restart: always
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: blog-post
+    volumes:
+      - blog-post-db-volume:/var/lib/postgresql/data
+
+volumes:
+  blog-post-db-volume:
